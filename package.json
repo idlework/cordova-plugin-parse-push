@@ -1,0 +1,38 @@
+{
+  "name": "cordova-plugin-parse-push",
+  "version": "0.1.0",
+  "description": "Cordova plugin: Parse push",
+  "cordova": {
+    "id": "cordova-plugin-parse-push",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idlework/cordova-plugin-parse-push.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova",
+    "plugin",
+    "parse",
+    "push",
+    "pushnotification",
+    "android",
+    "ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "idlework",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idlework/cordova-plugin-parse-push/issues"
+  },
+  "homepage": "https://github.com/idlework/cordova-plugin-parse-push#readme"
+}
