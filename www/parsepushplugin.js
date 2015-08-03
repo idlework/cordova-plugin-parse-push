@@ -16,8 +16,8 @@ function _callNativeFunction (name, params) {
   cordova.exec(_triggerEvent, _triggerEvent, 'ParsePushPlugin', name, params);
 }
 
-function _triggerEvent (key) {
-  if (typeof result !== 'string') {
+function _triggerEvent (type) {
+  if (typeof type !== 'string') {
     return;
   }
 
