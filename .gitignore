@@ -39,18 +39,6 @@ Temporary Items
 .apdisk
 
 
-# Cordova generated files #
-###########################
-platforms/* 
-!platforms/.keep
-plugins/*
-!plugins/.keep
-hooks/*
-!hooks/.keep
-www/*
-!www/.keep
-
-
 # Xcode editor generated files #
 ################################
 *.pbxuser
