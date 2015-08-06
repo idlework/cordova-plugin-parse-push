@@ -1,10 +1,10 @@
-#import "ParsePushNotificationPlugin.h"
+#import "ParsePushPlugin.h"
 #import <Cordova/CDV.h>
 #import <Parse/Parse.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-@implementation ParsePushNotificationPlugin
+@implementation ParsePushPlugin
 
 @synthesize callbackId;
 
@@ -43,7 +43,7 @@
   PFInstallation *currentInstallation = [PFInstallation currentInstallation];
   [currentInstallation save];
 	
-	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"initializeSucces"];
+	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 	[result setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
@@ -69,7 +69,7 @@
   [currentInstallation addUniqueObject:channel forKey:@"channels"];
   [currentInstallation save];
 
-	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"subscribeSucces"];
+	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 	[result setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
@@ -79,14 +79,14 @@
   [currentInstallation removeObject:channel forKey:@"channels"];
   [currentInstallation save];
 
-	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"unsubscribeSucces"];
+	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 	[result setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
 
 @end
 
-@implementation AppDelegate (ParsePushNotificationPlugin)
+@implementation AppDelegate (ParsePushPlugin)
 
 void MethodSwizzle(Class c, SEL originalSelector) {
     NSString *selectorString = NSStringFromSelector(originalSelector);

@@ -1,8 +1,11 @@
 package nl.idlework.cordova.plugin.parsepush;
 
+import android.content.Context;
+
+import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
-import org.apache.cordova.CallbackContext;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -28,23 +31,20 @@ public class ParsePushPlugin extends CordovaPlugin {
     
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-    switch (actions) {
+    switch (action) {
       case "initialize":
-          _initialize(args, callbackContext);
-          return true;
-        break;
+        _initialize(args, callbackContext);
+        return true;
       case "subscribe":
-          _subscribe(args, callbackContext);
-          return true;
-        break;
+        _subscribe(args, callbackContext);
+        return true;
       case "unsubscribe":
-          _unsubscribe(args, callbackContext);
-          return true;
-        break;
-      default:
-        // Returning false results in a "MethodNotFound" error.
-        return false; 
+        _unsubscribe(args, callbackContext);
+        return true;
     }
+
+    // Returning false results in a "MethodNotFound" error.
+    return false;
 	}
 	
 	private void _initialize(JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -94,9 +94,9 @@ public class ParsePushPlugin extends CordovaPlugin {
 			editor.putString("clientKey", clientKey);
 			editor.commit();
 		
-			_sendResult(PluginResult.Status.OK, "initializeSucces");
+			_sendResult(PluginResult.Status.OK);
     } catch (ParseException e) {
-			_sendResult(PluginResult.Status.ERROR, "initializeFailed");
+			_sendResult(PluginResult.Status.ERROR);
     }
   }
 
@@ -105,9 +105,9 @@ public class ParsePushPlugin extends CordovaPlugin {
       @Override
       public void done(ParseException e) {
         if (e == null) {
-      		_sendResult(PluginResult.Status.OK, "subscribeSucces");
+      		_sendResult(PluginResult.Status.OK);
         } else {
-        	_sendResult(PluginResult.Status.ERROR, "subscribeFailed");
+        	_sendResult(PluginResult.Status.ERROR);
         }
       }
     });
@@ -118,15 +118,15 @@ public class ParsePushPlugin extends CordovaPlugin {
       @Override
       public void done(ParseException e) {
         if (e == null) {
-      		_sendResult(PluginResult.Status.OK, "unsubscribeSucces");
+      		_sendResult(PluginResult.Status.OK);
         } else {
-      		_sendResult(PluginResult.Status.ERROR, "unsubscribeFailed");
+      		_sendResult(PluginResult.Status.ERROR);
         }
       }
     });
   }
 
-  private void _sendResult(String status, String type) {
+  private void _sendResult(PluginResult.Status status, String type) {
     PluginResult result = new PluginResult(status, type);
     result.setKeepCallback(true);
     _callbackContext.sendPluginResult(result);

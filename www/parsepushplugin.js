@@ -1,27 +1,19 @@
 'use strict';
 
-function initialize (applicationId, clientKey) {
-  _callNativeFunction('initialize', [applicationId, clientKey]);
+function initialize (callback, applicationId, clientKey) {
+  _callNativeFunction('initialize', callback, [applicationId, clientKey]);
 }
 
-function subscribe (channel) {
+function subscribe (callback, channel) {
   _callNativeFunction('subscribe', [channel]);
 }
 
-function unsubscribe (channel) {
+function unsubscribe (callback, channel) {
   _callNativeFunction('unsubscribe', [channel]);
 }
 
-function _callNativeFunction (name, params) {
-  cordova.exec(_triggerEvent, _triggerEvent, 'ParsePushPlugin', name, params);
-}
-
-function _triggerEvent (type) {
-  if (typeof type !== 'string') {
-    return;
-  }
-
-  this.trigger(type);
+function _callNativeFunction (callback, name, params) {
+  cordova.exec(callback, callback, 'ParsePushPlugin', name, params);
 }
 
 module.exports = {

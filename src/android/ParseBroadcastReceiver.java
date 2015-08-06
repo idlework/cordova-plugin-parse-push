@@ -13,12 +13,12 @@ public class ParseBroadcastReceiver extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) {
-		if (ParsePushNotificationPlugin.destroyed()) {
-			SharedPreferences sharedPref = context.getApplicationContext().getSharedPreferences(APP_SHARE_KEY, Context.MODE_PRIVATE);
-			String applicationId = sharedPref.getString("applicationId", "");
-			String clientKey = sharedPref.getString("clientKey", "");
-			Parse.initialize(context.getApplicationContext(), applicationId, clientKey);
-			ParseInstallation.getCurrentInstallation().saveInBackground();
-		}
+    if (ParsePushPlugin.destroyed()) {
+      SharedPreferences sharedPref = context.getApplicationContext().getSharedPreferences(APP_SHARE_KEY, Context.MODE_PRIVATE);
+      String applicationId = sharedPref.getString("applicationId", "");
+      String clientKey = sharedPref.getString("clientKey", "");
+      Parse.initialize(context.getApplicationContext(), applicationId, clientKey);
+      ParseInstallation.getCurrentInstallation().saveInBackground();
+    }
   }
 }
