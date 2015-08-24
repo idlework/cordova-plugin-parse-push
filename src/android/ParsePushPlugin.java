@@ -126,8 +126,8 @@ public class ParsePushPlugin extends CordovaPlugin {
     });
   }
 
-  private void _sendResult(PluginResult.Status status, String type) {
-    PluginResult result = new PluginResult(status, type);
+  private void _sendResult(PluginResult.Status status) {
+    PluginResult result = new PluginResult(status);
     result.setKeepCallback(true);
     _callbackContext.sendPluginResult(result);
   }
