@@ -71,7 +71,7 @@
 			<uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
         </config-file>
 
-        <source-file src="src/android/build-extras.gradle" target-dir="/" />
+        <source-file src="src/android/build-extras.gradle" target-dir="src/.." />
         <source-file src="src/android/ParsePushPlugin.java" target-dir="src/nl/idlework/cordova/plugin/parsepush" />
         <source-file src="src/android/ParseBroadcastReceiver.java" target-dir="src/nl/idlework/cordova/plugin/parsepush" />
 
