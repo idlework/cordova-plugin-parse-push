@@ -1,6 +1,6 @@
 Cordova Parse Push plugin
 =========================
-Project is still in development and not ready for use...
+Project became obsolete, Parse is no more
 
 # Overview #
 Requires parse account http://parse.com
